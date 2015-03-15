@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GRCostCenter">
+
+	<resultMap id="GRCostCenterResult" type="GRCostCenter">
+		<result property="idCostCenter" column="id" />
+		<result property="name" column="name" />
+	</resultMap>
+	
+	<insert id="insertAllGRCostCenters" parameterType="GRCostCenter">
+		INSERT INTO COSTCENTER (ID, NAME)
+			VALUES (#{idCostCenter}, #{name})
+	</insert>
+	
+	<update id="updateAllGRCostCenter" parameterType="GRCostCenter">
+		UPDATE COSTCENTER
+			SET NAME = #{name}
+			WHERE ID = #{idCostCenter}
+	</update>
+</mapper>
+ 

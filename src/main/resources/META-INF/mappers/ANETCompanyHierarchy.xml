@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ANETCompanyHierarchy">
+
+	<resultMap id="ANETCompanyAreaResult" type="ANETCompanyHierarchy">
+		<result property="companyHierarchy" column="STR_ID_EH" />
+		<result property="name" column="STR_NOME_EH" />
+		<result property="description" column="STR_DESC_EH" />
+	</resultMap>
+	
+	<insert id="insertAllANETCompanyHierarchies" parameterType="ANETCompanyHierarchy">
+		INSERT INTO EMPRESA_HIERARQUIA (STR_ID_EH, STR_NOME_EH, STR_DESC_EH, STR_IDPAI_EH, INFOCONTATO)
+			VALUES (#{companyHierarchy}, #{name}, #{description}, '', '')
+	</insert>
+</mapper>

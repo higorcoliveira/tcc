@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<ANET_COMPANY_HIERACHY COMPANY_HIERACHY="Gerência (M3)" NAME="Gerência (M3)" DESCRIPTION="Gerência (M3)" />
+	<ANET_COMPANY_HIERACHY COMPANY_HIERACHY="Superintendência (M4)" NAME="Superintendência (M4)" DESCRIPTION="Superintendência (M4)" />
+	<ANET_COMPANY_HIERACHY COMPANY_HIERACHY="Atendentes (O6)" NAME="Atendentes (O6)" DESCRIPTION="Atendentes (O6)" />
+	<EMPRESA_HIERARQUIA STR_ID_EH="Atendentes (O6)" STR_NOME_EH="Atendentes (O6)" STR_DESC_EH="Atendentes (O6)" />
+	<EMPRESA_HIERARQUIA STR_ID_EH="Gerência (M3)" STR_NOME_EH="Gerência (M3)" STR_DESC_EH="Gerência (M3)" />
+	<EMPRESA_HIERARQUIA STR_ID_EH="Superintendência (M4)" STR_NOME_EH="Superintendência (M4)" STR_DESC_EH="Superintendência (M4)" />
+</dataset>

@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CleanDatabase">
+
+	<delete id="cleanDatabase">
+		BEGIN
+		TRUNCATE TABLE GR_EMPLOYEE
+		
+		TRUNCATE TABLE ANET_MANAGER_PARTICIPANT
+		
+		TRUNCATE TABLE ANET_PARTICIPANT
+		
+		TRUNCATE TABLE EMPLOYEEUSER
+		END
+	</delete>
+	
+</mapper>

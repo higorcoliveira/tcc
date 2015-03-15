@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="HierarchyAtivo">
+
+	<resultMap id="HierarchyResult" type="HierarchyAtivo">
+		<result property="roleGroup" column="COMPANY_HIERACHY" />
+		<result property="roleGroup" column="NAME" />
+		<result property="roleGroup" column="DESCRIPTION" />
+	</resultMap>
+
+	<select id="selectAllHierarchies" resultMap="HierarchyResult">
+		SELECT COMPANY_HIERACHY FROM ANET_COMPANY_HIERACHY
+	</select>
+	
+	<insert id="insertAnetHierarchy" parameterType="java.util.List" >
+		INSERT INTO ANET_COMPANY_HIERACHY (COMPANY_HIERACHY, NAME, DESCRIPTION) 
+		VALUES ( 
+		<foreach item="Hierarchy" collection="list" open="" separator="),(" close="">
+       		#{Hierarchy.roleGroup}, #{Hierarchy.roleGroup}, #{Hierarchy.roleGroup}  
+    	</foreach>
+		)
+	</insert>
+
+</mapper>
+ 

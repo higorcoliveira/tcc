@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<CostCenter id="111111" name="Teste1" />
+	<Employee registry="123456" name="AfferoLab1" email="teste1@teste.com" position="GERENCIA (M3)" idCostCenter="111111" phone="1111111111" password="QL0AFWMIX8NRZTKeof9cXsvbvu8=" login="123456" contract="0040001250" changePassword="0" active="1" cpf="11111111111"/>
+</dataset>

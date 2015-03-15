@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmployeeUserAtivo">
+
+	<resultMap id="SkilloResult" type="EmployeeUserAtivo">
+		<result property="id" column="ID" />
+		<result property="re" column="RE" />
+		<result property="name" column="NOME" />
+		<result property="email" column="EMAIL" />
+		<result property="startDate" column="DATEDEINICIO" />
+		<result property="endDate" column="DATADEDESLIGAMENTO" />
+		<result property="birthday" column="DATADENASCIMENTO" />
+		<result property="password" column="SENHA" />
+		<result property="isLoginEnabled" column="LOGINHABILITADO" />
+		<result property="isExpiredPassword" column="SENHAEXPIRADA" />
+		<result property="isManager" column="GERENTE" />
+		<result property="roleGroup" column="GRUPODECARGO" />
+		<result property="reSuperior" column="RESUPERIOR" />
+		<result property="isActive" column="ATIVO" />
+		<result property="functionalSituation" column="SITUACAOFUNCIONAL" />
+		<result property="cpf" column="CPF" />
+		<result property="gender" column="SEXO" />
+		<result property="costCenter" column="CENTRODECUSTO" />
+		<result property="civilState" column="ESTADOCIVIL" />
+		<result property="scholarity" column="ESCOLARIDADE" />
+		<result property="phone" column="NUMTELEFONE" />
+		<result property="role" column="CARGO" />
+		<result property="contract" column="CONTRATO" />
+		<result property="site" column="SITE" />
+		<result property="executiveDirectory" column="DIRETORIAEXECUTIVA" />
+		<result property="consultancyName" column="NOMECONSULTORIA" />
+		<result property="rg" column="RG" />
+	</resultMap>
+
+	<insert id="insertSkilloEmployee" parameterType="java.util.List">
+		INSERT INTO EMPLOYEEUSER (RE, NOME, EMAIL, DATEDEINICIO, DATADEDESLIGAMENTO, DATADENASCIMENTO, SENHA, LOGINHABILITADO, SENHAEXPIRADA, GERENTE, GRUPODECARGO,
+			RESUPERIOR, ATIVO, SITUACAOFUNCIONAL, CPF, SEXO, CENTRODECUSTO, ESTADOCIVIL, ESCOLARIDADE, NUMTELEFONE, CARGO, CONTRATO, SITE, DIRETORIAEXECUTIVA,
+			NOMECONSULTORIA, RG, PAPEL)
+		VALUES (
+		<foreach item="Employee" collection="list" open="" close="" separator="),(">
+			#{Employee.re}, #{Employee.name}, #{Employee.email}, #{Employee.startDate}, 
+			 <choose>
+    			<when test="Employee.endDate != null">
+    				#{Employee.endDate},
+    			</when>
+    			<otherwise>
+    				null,
+    			</otherwise>
+    		</choose>
+			#{Employee.birthday}, 
+       		#{Employee.password}, #{Employee.isLoginEnabled}, #{Employee.isExpiredPassword}, #{Employee.isManager}, #{Employee.roleGroup},
+       		#{Employee.reSuperior}, #{Employee.isActive}, #{Employee.functionalSituation}, #{Employee.cpf}, #{Employee.gender},
+       		#{Employee.costCenter}, #{Employee.civilState}, #{Employee.scholarity}, #{Employee.phone}, #{Employee.role},
+       		#{Employee.contract}, #{Employee.site}, #{Employee.executiveDirectory}, #{Employee.consultancyName}, #{Employee.rg},
+       		#{Employee.function}
+		</foreach>
+		)
+	</insert>
+</mapper>

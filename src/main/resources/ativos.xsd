@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="reType">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[0-9]{6,11}"/>
+	</xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="booleanType">
+	<xs:restriction base="xs:byte">
+		<xs:pattern value="0|1"/>
+	</xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positiveIntegerOrEmpty">
+	<xs:union memberTypes="xs:positiveInteger">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value=""/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="dateOrEmpty">
+	<xs:union memberTypes="xs:date">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value=""/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="phoneType">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[0-9]+"/>
+	</xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="phoneOrEmpty">
+	<xs:union memberTypes="phoneType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value=""/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:union>
+  </xs:simpleType>
+  <xs:element name="participantes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="participante" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="positiveIntegerOrEmpty" name="id"/>
+              <xs:element type="reType" name="re"/>
+              <xs:element name="nome">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="email">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="150"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="xs:date" name="dataDeInicio"/>
+              <xs:element type="dateOrEmpty" name="dataDeDesligamento"/>
+              <xs:element type="xs:date" name="dataDeNascimento"/>
+              <xs:element name="senha">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="booleanType" name="loginHabilitado"/>
+              <xs:element type="booleanType" name="senhaExpirada"/>
+              <xs:element type="booleanType" name="gerente"/>
+              <xs:element name="grupoDeCargo">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="reType" name="reSuperior"/>
+              <xs:element type="booleanType" name="ativo"/>
+              <xs:element name="situacaoFuncional">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="cpf">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[0-9]{11}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="sexo">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="M|F"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="xs:int" name="centroDeCusto"/>
+              <xs:element name="estadoCivil">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="xs:int" name="escolaridade"/>
+              <xs:element name="diretoriaexecutiva">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="150"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element type="phoneOrEmpty" name="numTelefone"/>
+              <xs:element name="cargo">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="contrato">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="areaFuncao">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="site">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="nomeconsultoria">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="150"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="rg">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+              <xs:element name="emailcorporativo">
+			  	<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="150"/>
+					</xs:restriction>
+				</xs:simpleType>
+			  </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

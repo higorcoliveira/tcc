@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmployeeAtivo">
+
+	<resultMap id="GrResult" type="EmployeeAtivo">
+		<result property="id" column="ID" />
+		<result property="re" column="RE" />
+		<result property="name" column="NAME" />
+		<result property="email" column="EMAIL" />
+		<result property="password" column="PASSWORD" />
+		<result property="isActive" column="ACTIVE" />
+		<result property="cpf" column="CPF" />
+		<result property="contract" column="CONTRACT" />
+		<result property="phone" column="PHONE_NUMBER" />
+		<result property="costCenter" column="COST_CENTER" />
+		<result property="roleGroup" column="ROLE_GROUP" />
+	</resultMap>
+
+	<insert id="insertGrEmployee" parameterType="java.util.List">
+		INSERT INTO GR_EMPLOYEE (RE, NAME, EMAIL, PASSWORD, ACTIVE, CPF, CONTRACT, PHONE_NUMBER, COST_CENTER, ROLE_GROUP)
+		VALUES (
+		<foreach item="Employee" collection="list" open="" close="" separator="),(">
+			#{Employee.re}, #{Employee.name}, #{Employee.email}, #{Employee.password}, #{Employee.isActive}, 
+       		#{Employee.cpf}, #{Employee.contract}, #{Employee.phone}, #{Employee.costCenter}, #{Employee.roleGroup}
+		</foreach>
+		)
+	</insert>
+</mapper>

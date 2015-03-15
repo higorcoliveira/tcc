@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CostCenterAtivo">
+
+	<resultMap id="CostCenterGRResult" type="CostCenterAtivo">
+		<result property="id" column="ID" />
+		<result property="costCenter" column="IDCOSTCENTER" />
+		<result property="name" column="NAME" />
+	</resultMap>
+
+	<select id="selectAllCostCenters" resultMap="CostCenterGRResult">
+		SELECT IDCOSTCENTER FROM GR_COST_CENTER
+	</select>
+	
+	<insert id="insertGrCostCenter" parameterType="java.util.List" >
+		INSERT INTO GR_COST_CENTER (IDCOSTCENTER) 
+		VALUES ( 
+		<foreach item="AtivoGR" collection="list" open="" separator="),(" close="">
+       		#{AtivoGR.costCenter} 
+    	</foreach>
+		)
+	</insert>
+
+</mapper>
+ 

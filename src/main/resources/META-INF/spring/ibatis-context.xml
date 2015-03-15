@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+         http://www.springframework.org/schema/osgi  http://www.springframework.org/schema/osgi/spring-osgi.xsd
+         http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
+
+	<!-- ESTRUTURA INTERMEDIARIA -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="/META-INF/SqlMapConfig.xml"/>
+		<property name="mapperLocations" value="classpath*:META-INF/mappers/**/*.xml"/>
+	</bean>
+
+	<bean id="required" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
+		<property name="transactionManager" ref="txManager" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
+	</bean>
+
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="mybatis" class="org.apache.camel.component.mybatis.MyBatisComponent">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- GESTAO RECURSOS -->
+	<bean id="sqlSessionFactoryGR" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSourceGR"/>
+		<property name="configLocation" value="/META-INF/SqlMapConfig.xml"/>
+		<property name="mapperLocations" value="classpath*:META-INF/mappers/**/*.xml"/>
+	</bean>
+
+	<bean id="requiredGR" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
+		<property name="transactionManager" ref="txManagerGR" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
+	</bean>
+
+	<bean id="txManagerGR" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSourceGR"/>
+	</bean>
+
+	<bean id="mybatisGR" class="org.apache.camel.component.mybatis.MyBatisComponent">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactoryGR"/>
+	</bean>
+	
+	<!-- ANET -->
+	<bean id="sqlSessionFactoryANET" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSourceANET"/>
+		<property name="configLocation" value="/META-INF/SqlMapConfig.xml"/>
+		<property name="mapperLocations" value="classpath*:META-INF/mappers/**/*.xml"/>
+	</bean>
+
+	<bean id="requiredANET" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
+		<property name="transactionManager" ref="txManagerANET" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
+	</bean>
+
+	<bean id="txManagerANET" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSourceANET"/>
+	</bean>
+
+	<bean id="mybatisANET" class="org.apache.camel.component.mybatis.MyBatisComponent">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactoryANET"/>
+	</bean>
+	
+</beans>

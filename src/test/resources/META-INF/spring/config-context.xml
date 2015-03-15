@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+         
+        <bean id="hubConfigBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+			   <property name="ignoreUnresolvablePlaceholders" value="true" />
+	           <property name="properties" ref="hubConfig"/>
+		</bean>
+		
+		<bean id="atentoConfigBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+				<property name="ignoreUnresolvablePlaceholders" value="true" />
+	           <property name="properties" ref="atentoConfig"/>
+		</bean>
+		
+		<bean id="ativosConfigBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="ignoreUnresolvablePlaceholders" value="true" />
+	           <property name="properties" ref="ativosConfig"/>
+		</bean>
+         
+         <util:properties id="hubConfig">
+         	<prop key="hub.rs.url">http://localhost:7777/hub-integration/rest</prop>
+         	<prop key="hub.rs.fuseKey">fuse</prop>
+         	<prop key="hub.rs.fuseSecret">senha</prop>
+         	<prop key="hub.s3.bucket">br.com.affero.hub</prop>
+			<prop key="hub.s3.basefolder">cargas-test</prop>
+         	<prop key="aws.accessKey">abcd</prop>
+			<prop key="aws.secretKey">efgh</prop>
+
+         	<prop key="atento.db.driverClassName">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
+            <prop key="atento.db.url">jdbc:sqlserver://dbhost:1433;databaseName=atento_tests</prop>
+            <prop key="atento.db.username">test</prop>
+            <prop key="atento.db.password">test</prop>
+            <prop key="atento.db.pool.initialSize">10</prop>
+            <prop key="atento.db.pool.maxActive">100</prop>
+            <prop key="atento.db.pool.maxIdle">10</prop>
+            <prop key="atento.db.pool.validationQuery">select 1</prop>
+            <prop key="db.showSql">true</prop>
+         </util:properties>
+         
+         <util:properties id="atentoConfig">
+         	<prop key="application.rs.secret">1234</prop>
+         	<prop key="fuse.rs.cxfPort">1114</prop>
+         	<prop key="application.key">atento</prop>
+         	<prop key="activemq.url">vm://localhost</prop>
+         	<prop key="activemq.username">admin</prop>
+         	<prop key="activemq.password">affero2013</prop>         	
+         </util:properties>
+              
+         <util:properties id="ativosConfig">
+         	<prop key="application.task.key">ativos</prop>
+         	<prop key="activemq.queue.name">br.com.afferolab.hub.atento.ativos</prop>
+         	
+         	<!-- CONFIG GR-->
+         	<prop key="gr.database.name">atento_tests</prop>
+         	<prop key="gr.idPublicPool">6</prop>
+         	<prop key="gr.idRoleReadOnly">9</prop>
+         	
+         	<!-- CONFIG ANET -->
+         	<prop key="anet.database.name">atento_tests</prop>
+         	<prop key="anet.password.key">dark</prop>
+         </util:properties>
+         
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="${atento.db.driverClassName}" />
+			<property name="url" value="${atento.db.url}" />
+			<property name="username" value="${atento.db.username}" />
+			<property name="password" value="${atento.db.password}" />
+		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
+			<property name="maxActive" value="${atento.db.pool.maxActive}" />
+			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
+			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
+		</bean>
+		
+		<bean id="dataSourceGR" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="${atento.db.driverClassName}" />
+			<property name="url" value="${atento.db.url}" />
+			<property name="username" value="${atento.db.username}" />
+			<property name="password" value="${atento.db.password}" />
+		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
+			<property name="maxActive" value="${atento.db.pool.maxActive}" />
+			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
+			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
+		</bean>
+		
+		<bean id="dataSourceANET" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="${atento.db.driverClassName}" />
+			<property name="url" value="${atento.db.url}" />
+			<property name="username" value="${atento.db.username}" />
+			<property name="password" value="${atento.db.password}" />
+		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
+			<property name="maxActive" value="${atento.db.pool.maxActive}" />
+			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
+			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
+		</bean>
+</beans>

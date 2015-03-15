@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+         http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="javaUuidGenerator" class="org.apache.camel.impl.JavaUuidGenerator" />
+
+	<context:component-scan base-package="br.com.afferolab.hub.atento.ativos" />
+	
+	<camelContext id="atento-ativos" xmlns="http://camel.apache.org/schema/spring">
+		<propertyPlaceholder id="properties"
+			location="ref:hubConfig,ref:atentoConfig,ref:ativosConfig" />
+		<contextScan />
+
+		<dataFormats>
+			<jaxb id="integrationResponse" contextPath="br.com.afferolab.utils.camel.response" />
+			<jaxb id="ativos" contextPath="br.com.afferolab.hub.atento.ativos.entity.xml" />
+		</dataFormats>
+	</camelContext>
+
+</beans>

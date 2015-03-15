@@ -1,0 +1,34 @@
+------------------------------ INTERMERDIARIA --------------------------------------------------
+CREATE TABLE EMPLOYEEUSER (
+
+ID INT NOT NULL IDENTITY(1,1),
+RE int,
+NOME varchar(50),
+EMAIL varchar(150),
+DATEDEINICIO datetime,
+DATADEDESLIGAMENTO datetime,
+DATADENASCIMENTO datetime,
+SENHA varchar(20),
+LOGINHABILITADO bit,
+SENHAEXPIRADA bit,
+GERENTE bit,
+GRUPODECARGO varchar(50),
+RESUPERIOR int,
+ATIVO bit,
+SITUACAOFUNCIONAL int,
+CPF varchar(15),
+SEXO varchar(1),
+CENTRODECUSTO int,
+ESTADOCIVIL int,
+ESCOLARIDADE int,
+NUMTELEFONE varchar(20),
+CARGO varchar(100),
+PAPEL varchar(255),
+CONTRATO varchar(255),
+SITE varchar(255),
+DIRETORIAEXECUTIVA varchar(150),
+NOMECONSULTORIA varchar(150),
+RG varchar(20),
+
+CONSTRAINT pk_EMPLOYEEUSER PRIMARY KEY (ID)
+);

@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AreaAtivo">
+
+	<resultMap id="AreaResult" type="AreaAtivo">
+		<result property="site" column="COMPANY_AREA" />
+		<result property="site" column="NAME" />
+		<result property="site" column="DESCRIPTION" />
+	</resultMap>
+
+	<select id="selectAllAreas" resultMap="AreaResult">
+		SELECT COMPANY_AREA FROM ANET_COMPANY_AREA
+	</select>
+	
+	<insert id="insertAnetArea" parameterType="java.util.List" >
+		INSERT INTO ANET_COMPANY_AREA (COMPANY_AREA, NAME, DESCRIPTION) 
+		VALUES ( 
+		<foreach item="Area" collection="list" open="" separator="),(" close="">
+       		#{Area.site}, #{Area.site}, #{Area.site}  
+    	</foreach>
+		)
+	</insert>
+
+</mapper>
+ 

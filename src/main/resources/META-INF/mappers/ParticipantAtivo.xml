@@ -1,0 +1,54 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ParticipantAtivo">
+
+	<resultMap id="AnetResult" type="ParticipantAtivo">
+		<result property="id" column="ID" />
+		<result property="re" column="RE" />
+		<result property="name" column="NAME" />
+		<result property="email" column="EMAIL" />
+		<result property="site" column="COMPANYAREA" />
+		<result property="roleGroup" column="COMPANYHIERARCHY" />
+		<result property="password" column="PASSWORD" />		
+		<result property="isActive" column="ACTIVE" />
+		<result property="gender" column="GENDER" />
+		<result property="birthday" column="FULLBIRTHDAY" />
+		<result property="cpf" column="CPF" />
+		<result property="contract" column="CONTRACT" />
+		<result property="reSuperior" column="RESUPERIOR" />
+		<result property="civilState" column="MARITALSTATUS" />
+		<result property="scholarity" column="SCHOLARITY" />
+		<result property="costCenter" column="COSTCENTER" />
+		<result property="startDate" column="ADMISSIONDATE" />
+		<result property="rg" column="RG" />
+		<result property="executiveDirectory" column="EXECUTIVEBOARD" />
+		<result property="consultancyName" column="CONSULTINGNAME" />
+		<result property="phone" column="PHONE" />
+	</resultMap>
+
+	<insert id="insertAnetParticipants" parameterType="java.util.List">
+		INSERT INTO ANET_PARTICIPANT (COMPANY_AREA, COMPANY_HIERACHY, RE, NAME, EMAIL, PASSWORD, ACTIVE, GENDER, 
+		FULLBIRTHDAY, CPF, CONTRACT, RE_SUPERIOR, MARITAL_STATUS, SCHOLARITY, COST_CENTER, ADMISSION_DATE, RG, 
+		EXECUTIVE_BOARD, CONSULTING_NAME, PHONE)
+		VALUES (
+		<foreach item="Participant" collection="list" open="" close="" separator="),(">
+			#{Participant.site}, #{Participant.roleGroup}, #{Participant.re}, #{Participant.name}, #{Participant.email}, 
+			#{Participant.password}, #{Participant.isActive}, #{Participant.gender}, #{Participant.birthday}, 
+			#{Participant.cpf}, #{Participant.contract}, #{Participant.reSuperior}, #{Participant.civilState}, 
+			#{Participant.scholarity}, #{Participant.costCenter}, #{Participant.startDate}, #{Participant.rg}, 
+			#{Participant.executiveDirectory}, #{Participant.consultancyName}, #{Participant.phone}
+		</foreach>
+		)
+	</insert>
+	
+	<insert id="insertAnetManagerParticipant" parameterType="java.util.List">
+		INSERT INTO ANET_MANAGER_PARTICIPANT 
+		VALUES (
+		<foreach item="Participant" collection="list" open="" close="" separator="),(">
+			#{Participant.reSuperior}, #{Participant.re}
+		</foreach>
+		)
+	</insert>
+</mapper>

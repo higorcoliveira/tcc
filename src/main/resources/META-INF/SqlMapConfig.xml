@@ -1,0 +1,31 @@
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+<configuration>
+ 
+  <settings>
+    <setting name="useGeneratedKeys" value="false"/>
+  </settings>
+ 
+  <typeAliases>
+  		  <!-- ATIVOS -->
+		 <typeAlias alias="EmployeeAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="CostCenterAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="ParticipantAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="AreaAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="HierarchyAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="EmployeeUserAtivo" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 <typeAlias alias="CleanDatabase" type="br.com.afferolab.hub.atento.ativos.entity.xml.Ativo"/>
+		 
+		 <!-- GESTAO RECURSOS -->
+		 <typeAlias alias="GREmployee" type="br.com.afferolab.hub.atento.ativos.entity.gr.GrEmployee"/>
+		 <typeAlias alias="GRCostCenter" type="br.com.afferolab.hub.atento.ativos.entity.gr.GrCostCenter"/>
+
+		 <!-- AULANET -->
+		 <typeAlias alias="ANETCompanyArea" type="br.com.afferolab.hub.atento.ativos.entity.anet.AnetCompanyArea"/>
+		 <typeAlias alias="ANETCompanyHierarchy" type="br.com.afferolab.hub.atento.ativos.entity.anet.AnetCompanyHierachy"/>
+		 <typeAlias alias="ANETParticipant" type="br.com.afferolab.hub.atento.ativos.entity.anet.AnetParticipant"/>
+  </typeAliases>
+ 
+</configuration>

@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GREmployee">
+
+	<resultMap id="GrResultEmployee" type="GREmployee">
+		<result property="id" column="id" />
+		<result property="re" column="registry" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="active" column="active" />
+		<result property="cpf" column="cpf" />
+		<result property="contract" column="contract" />
+		<result property="phoneNumber" column="phone" />
+		<result property="costCenter" column="idCostCenter" />
+		<result property="roleGroup" column="position" />
+		<result property="changePassword" column="changePassword" />
+	</resultMap>
+</mapper>

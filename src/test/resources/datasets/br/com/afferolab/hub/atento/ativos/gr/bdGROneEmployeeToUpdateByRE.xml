@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<GR_EMPLOYEE RE="987654" NAME="Teste2" EMAIL="teste1@teste.com" PASSWORD="MzZhZTM5NThkZjExOGI4NGQyZTg1Nw==" ACTIVE="1" CPF="11111111111" CONTRACT="0040001250" PHONE_NUMBER="1111111111" COST_CENTER="111111" ROLE_GROUP="GERENCIA (M3)" />
+	<GR_COST_CENTER IDCOSTCENTER="111111" NAME="Centro de Custo Sem Descricao" />
+	<CostCenter id="111111" name="Centro de Custo Sem Descricao" />
+	<Employee registry="123456" name="Teste1" email="teste1@teste.com" position="GERENCIA (M3)" idCostCenter="111111" phone="1111111111" password="QL0AFWMIX8NRZTKeof9cXsvbvu8=" login="123456" contract="0040001250" changePassword="0" active="1" cpf="11111111111"/>
+</dataset>
