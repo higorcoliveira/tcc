@@ -7,12 +7,13 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativo;
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativos;
+import br.com.tcc.integracao.bean.lms.LMSFilter;
+import br.com.tcc.integracao.entity.xml.Ativo;
+import br.com.tcc.integracao.entity.xml.Ativos;
 
 public class ANETFilterTest {
 	
-	ANETFilter beanFilter = new ANETFilter();
+	LMSFilter beanFilter = new LMSFilter();
 	
 	@Test
 	public void filterMessage_should_return_empty_list() {

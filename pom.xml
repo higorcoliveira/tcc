@@ -4,27 +4,37 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.afferolab.hub.atento</groupId>
-	<artifactId>ativos</artifactId>
+	<groupId>br.com.tcc.integracao</groupId>
+	<artifactId>integracao</artifactId>
 	<packaging>bundle</packaging>
 	<version>1.5.1</version>
 
-	<name>atento - ativos</name>
+	<name>ativos</name>
 	<url>http://www.afferolab.com.br</url>
 
-	<parent>
-		<groupId>br.com.afferolab.hub</groupId>
-		<artifactId>atento</artifactId>
-		<version>1.0.0</version>
-	</parent>
-
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<camel-version>2.10.0.redhat-60024</camel-version>
+		<spring-version>3.1.3.RELEASE</spring-version>
 		<afferolab.camel-version>1.6.13</afferolab.camel-version>
 		<activemq-version>5.8.0</activemq-version>
 	</properties>
 
 	<dependencies>
 		<!-- Camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>${camel-version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb</artifactId>
@@ -55,6 +65,43 @@
 			<version>${camel-version}</version>
 		</dependency>
 
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<!-- Teste -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test-spring</artifactId>
+			<version>${camel-version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -77,12 +124,6 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-pool</artifactId>
 			<version>${activemq-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>aulanet.crypt</groupId>
-			<artifactId>crypt</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<!-- Componentes Customizados -->
@@ -198,5 +239,18 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<repositories>
+		<repository>
+			<id>affero</id>
+			<url>http://code.google.com/p/camelinaction/source/browse/</url>
+		</repository>
+	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>affero</id>
+			<url>http://code.google.com/p/camelinaction/source/browse/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

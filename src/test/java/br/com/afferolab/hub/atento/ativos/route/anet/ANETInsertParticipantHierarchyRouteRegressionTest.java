@@ -14,8 +14,8 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativo;
 import br.com.afferolab.hub.atento.util.CamelTestTemplate;
+import br.com.tcc.integracao.entity.xml.Ativo;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)
 public class ANETInsertParticipantHierarchyRouteRegressionTest extends CamelTestTemplate {

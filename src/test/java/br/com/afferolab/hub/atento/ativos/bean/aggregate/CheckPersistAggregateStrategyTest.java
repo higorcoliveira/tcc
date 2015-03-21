@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.afferolab.hub.atento.ativos.bean.AggregateStrategy;
-import br.com.afferolab.hub.atento.ativos.util.RouteConstants;
+import br.com.tcc.integracao.AggregateStrategy;
+import br.com.tcc.integracao.util.RouteConstants;
 
 public class CheckPersistAggregateStrategyTest {
 	

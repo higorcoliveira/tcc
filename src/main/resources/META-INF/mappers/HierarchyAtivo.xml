@@ -11,11 +11,11 @@
 	</resultMap>
 
 	<select id="selectAllHierarchies" resultMap="HierarchyResult">
-		SELECT COMPANY_HIERACHY FROM ANET_COMPANY_HIERACHY
+		SELECT COMPANY_HIERACHY FROM LMS_COMPANY_HIERACHY
 	</select>
 	
-	<insert id="insertAnetHierarchy" parameterType="java.util.List" >
-		INSERT INTO ANET_COMPANY_HIERACHY (COMPANY_HIERACHY, NAME, DESCRIPTION) 
+	<insert id="insertLMSHierarchy" parameterType="java.util.List" >
+		INSERT INTO LMS_COMPANY_HIERACHY (COMPANY_HIERACHY, NAME, DESCRIPTION) 
 		VALUES ( 
 		<foreach item="Hierarchy" collection="list" open="" separator="),(" close="">
        		#{Hierarchy.roleGroup}, #{Hierarchy.roleGroup}, #{Hierarchy.roleGroup}  

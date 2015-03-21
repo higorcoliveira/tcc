@@ -8,7 +8,8 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativo;
+import br.com.tcc.integracao.bean.lms.MergeStrategyArea;
+import br.com.tcc.integracao.entity.xml.Ativo;
 
 public class MergeStrategyAreaTest {
 	

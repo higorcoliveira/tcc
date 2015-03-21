@@ -4,7 +4,7 @@
 
 <mapper namespace="ParticipantAtivo">
 
-	<resultMap id="AnetResult" type="ParticipantAtivo">
+	<resultMap id="LMSResult" type="ParticipantAtivo">
 		<result property="id" column="ID" />
 		<result property="re" column="RE" />
 		<result property="name" column="NAME" />
@@ -28,8 +28,8 @@
 		<result property="phone" column="PHONE" />
 	</resultMap>
 
-	<insert id="insertAnetParticipants" parameterType="java.util.List">
-		INSERT INTO ANET_PARTICIPANT (COMPANY_AREA, COMPANY_HIERACHY, RE, NAME, EMAIL, PASSWORD, ACTIVE, GENDER, 
+	<insert id="insertLMSParticipants" parameterType="java.util.List">
+		INSERT INTO LMS_PARTICIPANT (COMPANY_AREA, COMPANY_HIERACHY, RE, NAME, EMAIL, PASSWORD, ACTIVE, GENDER, 
 		FULLBIRTHDAY, CPF, CONTRACT, RE_SUPERIOR, MARITAL_STATUS, SCHOLARITY, COST_CENTER, ADMISSION_DATE, RG, 
 		EXECUTIVE_BOARD, CONSULTING_NAME, PHONE)
 		VALUES (
@@ -43,8 +43,8 @@
 		)
 	</insert>
 	
-	<insert id="insertAnetManagerParticipant" parameterType="java.util.List">
-		INSERT INTO ANET_MANAGER_PARTICIPANT 
+	<insert id="insertLMSManagerParticipant" parameterType="java.util.List">
+		INSERT INTO LMS_MANAGER_PARTICIPANT 
 		VALUES (
 		<foreach item="Participant" collection="list" open="" close="" separator="),(">
 			#{Participant.reSuperior}, #{Participant.re}

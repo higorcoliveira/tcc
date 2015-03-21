@@ -29,13 +29,13 @@
          	<prop key="hub.rs.url">http://localhost:7777/hub-integration/rest</prop>
          	<prop key="hub.rs.fuseKey">fuse</prop>
          	<prop key="hub.rs.fuseSecret">senha</prop>
-         	<prop key="hub.s3.bucket">br.com.affero.hub</prop>
+         	<prop key="hub.s3.bucket">br.com.integracao</prop>
 			<prop key="hub.s3.basefolder">cargas-test</prop>
          	<prop key="aws.accessKey">abcd</prop>
 			<prop key="aws.secretKey">efgh</prop>
 
          	<prop key="atento.db.driverClassName">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
-            <prop key="atento.db.url">jdbc:sqlserver://dbhost:1433;databaseName=atento_tests</prop>
+            <prop key="atento.db.url">jdbc:sqlserver://dbhost:1433;databaseName=database_tests</prop>
             <prop key="atento.db.username">test</prop>
             <prop key="atento.db.password">test</prop>
             <prop key="atento.db.pool.initialSize">10</prop>
@@ -56,48 +56,32 @@
               
          <util:properties id="ativosConfig">
          	<prop key="application.task.key">ativos</prop>
-         	<prop key="activemq.queue.name">br.com.afferolab.hub.atento.ativos</prop>
+         	<prop key="activemq.queue.name">br.com.tcc.integracao</prop>
          	
-         	<!-- CONFIG GR-->
-         	<prop key="gr.database.name">atento_tests</prop>
-         	<prop key="gr.idPublicPool">6</prop>
-         	<prop key="gr.idRoleReadOnly">9</prop>
-         	
-         	<!-- CONFIG ANET -->
-         	<prop key="anet.database.name">atento_tests</prop>
-         	<prop key="anet.password.key">dark</prop>
+         	<!-- CONFIG LMS -->
+         	<prop key="lms.database.name">database_tests</prop>
+         	<prop key="lms.password.key">dark</prop>
          </util:properties>
          
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-			<property name="driverClassName" value="${atento.db.driverClassName}" />
+			<property name="driverClassName" value="${db.driverClassName}" />
 			<property name="url" value="${atento.db.url}" />
-			<property name="username" value="${atento.db.username}" />
-			<property name="password" value="${atento.db.password}" />
-		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
-			<property name="maxActive" value="${atento.db.pool.maxActive}" />
-			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
-			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
+			<property name="username" value="${db.username}" />
+			<property name="password" value="${db.password}" />
+		    <property name="initialSize" value="${db.pool.initialSize}" />
+			<property name="maxActive" value="${db.pool.maxActive}" />
+			<property name="maxIdle" value="${db.pool.maxIdle}" />
+			<property name="validationQuery" value="${db.pool.validationQuery}" />
 		</bean>
 		
-		<bean id="dataSourceGR" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-			<property name="driverClassName" value="${atento.db.driverClassName}" />
-			<property name="url" value="${atento.db.url}" />
-			<property name="username" value="${atento.db.username}" />
-			<property name="password" value="${atento.db.password}" />
-		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
-			<property name="maxActive" value="${atento.db.pool.maxActive}" />
-			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
-			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
-		</bean>
-		
-		<bean id="dataSourceANET" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-			<property name="driverClassName" value="${atento.db.driverClassName}" />
-			<property name="url" value="${atento.db.url}" />
-			<property name="username" value="${atento.db.username}" />
-			<property name="password" value="${atento.db.password}" />
-		    <property name="initialSize" value="${atento.db.pool.initialSize}" />
-			<property name="maxActive" value="${atento.db.pool.maxActive}" />
-			<property name="maxIdle" value="${atento.db.pool.maxIdle}" />
-			<property name="validationQuery" value="${atento.db.pool.validationQuery}" />
+		<bean id="dataSourceLMS" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="${db.driverClassName}" />
+			<property name="url" value="${db.url}" />
+			<property name="username" value="${db.username}" />
+			<property name="password" value="${db.password}" />
+		    <property name="initialSize" value="${db.pool.initialSize}" />
+			<property name="maxActive" value="${db.pool.maxActive}" />
+			<property name="maxIdle" value="${db.pool.maxIdle}" />
+			<property name="validationQuery" value="${db.pool.validationQuery}" />
 		</bean>
 </beans>

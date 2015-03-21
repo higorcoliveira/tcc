@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
-import br.com.afferolab.hub.atento.ativos.util.RouteConstants;
 import br.com.afferolab.hub.atento.util.CamelTestTemplate;
+import br.com.tcc.integracao.util.RouteConstants;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)

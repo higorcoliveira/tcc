@@ -27,7 +27,7 @@
 	        <property name="properties" ref="ativosConfig"/>
 		</bean>
          
-        <osgix:cm-properties id="hubConfig" persistent-id="br.com.afferolab.hub">
+        <osgix:cm-properties id="hubConfig" persistent-id="br.com.tcc.hub">
          	<prop key="aws.accessKey">abcd</prop>
             <prop key="aws.secretKey">efgh</prop>
             <prop key="hub.rs.url">http://localhost:7777/hub-integration/rest</prop>
@@ -38,36 +38,25 @@
 			<prop key="hub.checkpoint.retries">3</prop>
         </osgix:cm-properties>
 
-        <osgix:cm-properties id="atentoConfig" persistent-id="br.com.afferolab.hub.atento">
+        <osgix:cm-properties id="atentoConfig" persistent-id="br.com.tcc.integracao">
             <prop key="application.rs.secret">1234</prop>
          	<prop key="fuse.rs.cxfPort">8182</prop>
          	<prop key="application.key">atento</prop>
          	<prop key="activemq.url">tcp://localhost:61616</prop>
          	<prop key="activemq.username">admin</prop>
          	<prop key="activemq.password">affero2013</prop>
+         	
+         	<prop key="application.task.key">ativos</prop>
+         	<prop key="activemq.queue.name">br.com.tcc.integracao</prop>
+         	
+         	<!-- CONFIG LMS -->
+         	<prop key="lms.database.name">atentolms</prop>
+         	<prop key="lms.password.key">dark</prop>
         </osgix:cm-properties>
               
-        <osgix:cm-properties id="ativosConfig" persistent-id="br.com.afferolab.hub.atento.ativos">
-         	<prop key="application.task.key">ativos</prop>
-         	<prop key="activemq.queue.name">br.com.afferolab.hub.atento.ativos</prop>
-         	
-         	<!-- CONFIG GR-->
-         	<prop key="gr.database.name">gestaoRecursos</prop>
-         	<prop key="gr.idPublicPool">6</prop>
-         	<prop key="gr.idRoleReadOnly">9</prop>
-         	
-         	<!-- CONFIG ANET -->
-         	<prop key="anet.database.name">atentolms</prop>
-         	<prop key="anet.password.key">dark</prop>
-         	
-        </osgix:cm-properties>
-         
         <!-- INTERMEDIARIA -->
-        <osgi:reference id="dataSource" interface="javax.sql.DataSource" bean-name="atento.carga.datasource" />
+        <osgi:reference id="dataSource" interface="javax.sql.DataSource" bean-name="integration.datasource" />
          
-		<!-- GESTAO RECURSOS -->
-        <osgi:reference id="dataSourceGR" interface="javax.sql.DataSource" bean-name="atento.gr.datasource" />
-         
-		<!-- AULANET -->
-        <osgi:reference id="dataSourceANET" interface="javax.sql.DataSource" bean-name="atento.aulanet.datasource" />
+		<!-- LMS -->
+        <osgi:reference id="dataSourceLMS" interface="javax.sql.DataSource" bean-name="lms.datasource" />
 </beans>

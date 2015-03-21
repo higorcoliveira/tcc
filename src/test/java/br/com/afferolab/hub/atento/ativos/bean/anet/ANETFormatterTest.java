@@ -3,13 +3,14 @@ package br.com.afferolab.hub.atento.ativos.bean.anet;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativo;
+import br.com.tcc.integracao.bean.lms.LMSFormatter;
+import br.com.tcc.integracao.entity.xml.Ativo;
 
 public class ANETFormatterTest {
 
 	private static final String PASSWORD_KEY = "dark";
 	
-	ANETFormatter formatter = new ANETFormatter();
+	LMSFormatter formatter = new LMSFormatter();
 	
 	/*
 	 * metodo testado formatEmail(String email)

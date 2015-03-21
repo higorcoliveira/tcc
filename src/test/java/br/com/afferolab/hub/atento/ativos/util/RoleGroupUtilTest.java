@@ -3,6 +3,8 @@ package br.com.afferolab.hub.atento.ativos.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.com.tcc.integracao.util.RoleGroupUtil;
+
 public class RoleGroupUtilTest {
 
 	@Test (expected = IllegalArgumentException.class)

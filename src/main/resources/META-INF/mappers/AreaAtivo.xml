@@ -11,11 +11,11 @@
 	</resultMap>
 
 	<select id="selectAllAreas" resultMap="AreaResult">
-		SELECT COMPANY_AREA FROM ANET_COMPANY_AREA
+		SELECT COMPANY_AREA FROM LMS_COMPANY_AREA
 	</select>
 	
-	<insert id="insertAnetArea" parameterType="java.util.List" >
-		INSERT INTO ANET_COMPANY_AREA (COMPANY_AREA, NAME, DESCRIPTION) 
+	<insert id="insertLmsArea" parameterType="java.util.List" >
+		INSERT INTO LMS_COMPANY_AREA (COMPANY_AREA, NAME, DESCRIPTION) 
 		VALUES ( 
 		<foreach item="Area" collection="list" open="" separator="),(" close="">
        		#{Area.site}, #{Area.site}, #{Area.site}  

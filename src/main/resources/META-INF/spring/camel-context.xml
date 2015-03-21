@@ -13,7 +13,7 @@
 
 	<bean id="javaUuidGenerator" class="org.apache.camel.impl.JavaUuidGenerator" />
 
-	<context:component-scan base-package="br.com.afferolab.hub.atento.ativos" />
+	<context:component-scan base-package="br.com.tcc.integracao" />
 	
 	<camelContext id="atento-ativos" xmlns="http://camel.apache.org/schema/spring">
 		<propertyPlaceholder id="properties"
@@ -21,8 +21,8 @@
 		<contextScan />
 
 		<dataFormats>
-			<jaxb id="integrationResponse" contextPath="br.com.afferolab.utils.camel.response" />
-			<jaxb id="ativos" contextPath="br.com.afferolab.hub.atento.ativos.entity.xml" />
+			<jaxb id="integrationResponse" contextPath="br.com.tcc.integracao.utils.camel.response" />
+			<jaxb id="ativos" contextPath="br.com.tcc.integracao.entity.xml" />
 		</dataFormats>
 	</camelContext>
 

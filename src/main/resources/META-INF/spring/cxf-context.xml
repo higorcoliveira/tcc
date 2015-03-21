@@ -12,7 +12,7 @@
          http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
          
 	<cxf:rsServer id="rsServer" address="http://0.0.0.0:{{fuse.rs.cxfPort}}/hub/rest/{{application.key}}/{{application.task.key}}"
-		serviceClass="br.com.afferolab.hub.atento.ativos.rest.LoadService" 
+		serviceClass="br.com.tcc.integracao.rest.LoadService" 
 		loggingFeatureEnabled="true" loggingSizeLimit="1000" staticSubresourceResolution="true">
 	</cxf:rsServer>
 </beans>

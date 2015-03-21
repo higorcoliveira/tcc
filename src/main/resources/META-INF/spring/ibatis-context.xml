@@ -32,44 +32,23 @@
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
-	<!-- GESTAO RECURSOS -->
-	<bean id="sqlSessionFactoryGR" class="org.mybatis.spring.SqlSessionFactoryBean">
-	    <property name="dataSource" ref="dataSourceGR"/>
+	<!-- LMS -->
+	<bean id="sqlSessionFactoryLMS" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSourceLMS"/>
 		<property name="configLocation" value="/META-INF/SqlMapConfig.xml"/>
 		<property name="mapperLocations" value="classpath*:META-INF/mappers/**/*.xml"/>
 	</bean>
 
-	<bean id="requiredGR" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
-		<property name="transactionManager" ref="txManagerGR" />
+	<bean id="requiredLMS" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
+		<property name="transactionManager" ref="txManagerLMS" />
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
 	</bean>
 
-	<bean id="txManagerGR" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	    <property name="dataSource" ref="dataSourceGR"/>
+	<bean id="txManagerLMS" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSourceLMS"/>
 	</bean>
 
-	<bean id="mybatisGR" class="org.apache.camel.component.mybatis.MyBatisComponent">
-	    <property name="sqlSessionFactory" ref="sqlSessionFactoryGR"/>
+	<bean id="mybatisLMS" class="org.apache.camel.component.mybatis.MyBatisComponent">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactoryLMS"/>
 	</bean>
-	
-	<!-- ANET -->
-	<bean id="sqlSessionFactoryANET" class="org.mybatis.spring.SqlSessionFactoryBean">
-	    <property name="dataSource" ref="dataSourceANET"/>
-		<property name="configLocation" value="/META-INF/SqlMapConfig.xml"/>
-		<property name="mapperLocations" value="classpath*:META-INF/mappers/**/*.xml"/>
-	</bean>
-
-	<bean id="requiredANET" class="org.apache.camel.spring.spi.SpringTransactionPolicy"> 
-		<property name="transactionManager" ref="txManagerANET" />
-		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
-	</bean>
-
-	<bean id="txManagerANET" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	    <property name="dataSource" ref="dataSourceANET"/>
-	</bean>
-
-	<bean id="mybatisANET" class="org.apache.camel.component.mybatis.MyBatisComponent">
-	    <property name="sqlSessionFactory" ref="sqlSessionFactoryANET"/>
-	</bean>
-	
 </beans>

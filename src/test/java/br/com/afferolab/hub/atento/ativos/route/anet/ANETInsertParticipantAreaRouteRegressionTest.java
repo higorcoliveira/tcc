@@ -10,8 +10,8 @@ import org.apache.camel.test.junit4.CamelSpringJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.com.afferolab.hub.atento.ativos.entity.xml.Ativo;
 import br.com.afferolab.hub.atento.util.CamelTestTemplate;
+import br.com.tcc.integracao.entity.xml.Ativo;
 
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
