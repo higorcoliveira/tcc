@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.bean.anet;
+package br.com.tcc.integracao.lms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,6 @@ public class MergeStrategyAreaTest {
 	/*
 	 * metodo testado removeExistingAreas(List<Ativo> areasXML, Map<String, Ativo> areasDB)
 	 */
-	
 	@Test
 	public void removeExistingAreas_should_return_emptyList_when_area_have_in_db_and_xml() {
 		// Arrange

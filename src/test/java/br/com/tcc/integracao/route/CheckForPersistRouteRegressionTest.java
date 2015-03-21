@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.route;
+package br.com.tcc.integracao.route;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
-import br.com.afferolab.hub.atento.util.CamelTestTemplate;
+import br.com.tcc.integracao.test.util.CamelTestTemplate;
 import br.com.tcc.integracao.util.RouteConstants;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)

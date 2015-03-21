@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.bean.anet;
+package br.com.tcc.integracao.lms;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.com.tcc.integracao.bean.lms.LMSFormatter;
 import br.com.tcc.integracao.entity.xml.Ativo;
 
-public class ANETFormatterTest {
+public class LMSFormatterTest {
 
 	private static final String PASSWORD_KEY = "dark";
 	

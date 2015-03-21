@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.bean.anet;
+package br.com.tcc.integracao.lms;
 
 import java.util.ArrayList;
 import java.util.HashMap;

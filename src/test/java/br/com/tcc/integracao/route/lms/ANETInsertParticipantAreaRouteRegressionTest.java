@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.route.anet;
+package br.com.tcc.integracao.route.lms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.apache.camel.test.junit4.CamelSpringJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.com.afferolab.hub.atento.util.CamelTestTemplate;
 import br.com.tcc.integracao.entity.xml.Ativo;
+import br.com.tcc.integracao.test.util.CamelTestTemplate;
 
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;

@@ -35,13 +35,13 @@ public class StartRoute extends SpringRouteBuilder {
 		
 		from("cxfrshub:bean:rsServer").routeId("AtivosStartRoute")
 		.to("checkpoint:bean?executionStatus=start_process&saveFile=true")
-		.to("checkpoint:bean?message=[Ativos] XML sendo descomprimido...")
+		.to("checkpoint:bean?message=XML sendo descomprimido...")
 		.unmarshal().gzip()
-		.to("checkpoint:bean?message=[Ativos] XML descomprimido...")
+		.to("checkpoint:bean?message=XML descomprimido...")
 		.bean(XMLValidation.class)
-		.to("checkpoint:bean?message=[Ativos] XML validado com sucesso...")		
+		.to("checkpoint:bean?message=XML validado com sucesso...")		
 		.marshal().gzip()
-		.to("checkpoint:bean?message=[Ativos] Iniciando processamento da carga...")
+		.to("checkpoint:bean?message=Iniciando processamento da carga...")
 	    .inOnly("activemq:queue:{{activemq.queue.name}}")
 		.bean(ResponseFactory.class, "ok")
 		.setHeader(CheckpointComponentConstants.CHECKPOINT_REST_ENTITY, simple("${body.entity.marshal()}"));

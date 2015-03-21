@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.route;
+package br.com.tcc.integracao.route;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -15,10 +15,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
-import br.com.afferolab.hub.atento.util.CamelTestTemplate;
 import br.com.afferolab.utils.util.TestUtil;
 import br.com.tcc.integracao.entity.xml.Ativo;
 import br.com.tcc.integracao.entity.xml.Ativos;
+import br.com.tcc.integracao.test.util.CamelTestTemplate;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)

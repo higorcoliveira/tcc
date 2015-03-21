@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.route.anet;
+package br.com.tcc.integracao.route.lms;
 
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
@@ -7,7 +7,7 @@ import org.apache.camel.test.junit4.CamelSpringJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.com.afferolab.hub.atento.util.CamelTestTemplate;
+import br.com.tcc.integracao.test.util.CamelTestTemplate;
 
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;

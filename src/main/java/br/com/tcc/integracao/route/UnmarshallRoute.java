@@ -30,18 +30,18 @@ public class UnmarshallRoute extends SpringRouteBuilder {
 		
 		from("activemq:queue:{{activemq.queue.name}}?requestTimeoutCheckerInterval=60")
 		.routeId("UnmarshallRoute")
-		.to("checkpoint:bean?message=[Ativos] Recebendo mensagem da fila...")
-		.to("checkpoint:bean?message=[Ativos] Descomprimindo mensagem...")
+		.to("checkpoint:bean?message=Recebendo mensagem da fila...")
+		.to("checkpoint:bean?message=Descomprimindo mensagem...")
 		.unmarshal().gzip()
-		.to("checkpoint:bean?message=[Ativos] Mensagem descomprimida com sucesso...")
+		.to("checkpoint:bean?message=Mensagem descomprimida com sucesso...")
 		.unmarshal("ativos")
-		.to("checkpoint:bean?message=[Ativos] Lista de objetos montada...")
-		.to("checkpoint:bean?message=[Ativos] Limpando Estrutura Intermediária...")
+		.to("checkpoint:bean?message=Lista de objetos montada...")
+		.to("checkpoint:bean?message=Limpando Estrutura Intermediária...")
 		.to("mybatis:cleanDatabase?statementType=Delete")
-		.to("checkpoint:bean?message=[Ativos] Estrutura Intermediária limpa com sucesso...")
-		.to("checkpoint:bean?message=[Ativos] Enviando para as rotas de validação do GR, Aulanet e Skillo...")
+		.to("checkpoint:bean?message=Estrutura Intermediária limpa com sucesso...")
+		.to("checkpoint:bean?message=Enviando para as rotas de validação LMS...")
 		.multicast()
 		.parallelProcessing()
-		.to("direct:gestaoRecursosFormatter", "direct:anetFormatter", "direct:skilloFormatter");
+		.to("direct:anetFormatter");
 	}
 }

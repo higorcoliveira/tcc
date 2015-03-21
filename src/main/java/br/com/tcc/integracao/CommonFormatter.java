@@ -13,14 +13,14 @@ public abstract class CommonFormatter {
 		String emailFormatted = ativo.getEmail();
 		
 		if (emailFormatted == null || emailFormatted.isEmpty()){
-			emailFormatted = "atento_" + ativo.getRe() + "@atento.com.br";
+			emailFormatted = "atento_" + ativo.getRe() + "@client.com.br";
 		}
 
 		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
 		Matcher matcher = pattern.matcher(emailFormatted);
 		
 		if (!matcher.matches()) {
-			emailFormatted = "GR" + ativo.getRe() + "@atento.com.br";
+			emailFormatted = "GR" + ativo.getRe() + "@client.com.br";
 		}
 		return emailFormatted;
 	}

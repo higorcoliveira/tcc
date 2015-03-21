@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.route;
+package br.com.tcc.integracao.route;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,9 +13,9 @@ import org.apache.camel.test.junit4.CamelSpringJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.com.afferolab.hub.atento.util.CamelTestTemplate;
 import br.com.afferolab.utils.camel.response.IntegrationResponse;
 import br.com.afferolab.utils.util.TestUtil;
+import br.com.tcc.integracao.test.util.CamelTestTemplate;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)
 public class StartRouteRegressionTest extends CamelTestTemplate {

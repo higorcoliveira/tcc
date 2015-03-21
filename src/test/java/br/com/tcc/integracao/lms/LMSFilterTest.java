@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.bean.anet;
+package br.com.tcc.integracao.lms;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +11,7 @@ import br.com.tcc.integracao.bean.lms.LMSFilter;
 import br.com.tcc.integracao.entity.xml.Ativo;
 import br.com.tcc.integracao.entity.xml.Ativos;
 
-public class ANETFilterTest {
+public class LMSFilterTest {
 	
 	LMSFilter beanFilter = new LMSFilter();
 	

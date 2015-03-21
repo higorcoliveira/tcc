@@ -17,17 +17,17 @@ public class CheckForPersistRoute extends SpringRouteBuilder {
         .to("checkpoint:error?executionStatus=processed_with_error");
 		
 		from("seda:checkForPersistRoute").routeId("CheckForPersistRoute")
-		.to("checkpoint:bean?message=[Ativo] Verificando se todas as validações ocorreram com sucesso...")
+		.to("checkpoint:bean?message=Verificando se todas as validações ocorreram com sucesso...")
 		.aggregate(header(RouteConstants.HEADER_STATUS), new AggregateStrategy())
 		.completionSize(3)
 		.choice()
 		 .when(simple("${body} != true"))
-		   .to("checkpoint:bean?message=[Ativo] Rota(s) ${header.routeGRFail} ${header.routeAnetFail} ${header.routeSkilloFail} apresentou(aram) falha(s). A carga não irá continuar seu processamento.")
+		   .to("checkpoint:bean?message=Rota ${header.routeLmsFail} apresentou(aram) falha(s). A carga não irá continuar seu processamento.")
 		   .to("checkpoint:error?executionStatus=processed_with_error")
 		 .otherwise()
-		   .to("checkpoint:bean?message=[Ativo] Enviando para as rotas que persistem os dados nas bases do GR, Aulanet e Skillo...")
+		   .to("checkpoint:bean?message=Enviando para as rotas que persistem os dados na base do LMS...")
 		   .multicast()
-		   .to("direct:gestaoRecursosPersist", "direct:anetPersist", "direct:skilloPersist")
+		   .to("direct:lmsPersist")
 		.end();
 	}
 }

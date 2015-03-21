@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.util;
+package br.com.tcc.integracao.util;
 
 import org.junit.Assert;
 import org.junit.Test;

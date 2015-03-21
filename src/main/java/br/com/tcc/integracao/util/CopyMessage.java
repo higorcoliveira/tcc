@@ -3,7 +3,6 @@ package br.com.tcc.integracao.util;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
-import org.apache.camel.Handler;
 import org.apache.commons.beanutils.BeanUtils;
 
 import br.com.tcc.integracao.entity.xml.Ativo;

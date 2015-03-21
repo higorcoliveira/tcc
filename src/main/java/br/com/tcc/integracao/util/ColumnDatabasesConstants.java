@@ -3,26 +3,7 @@ package br.com.tcc.integracao.util;
 public final class ColumnDatabasesConstants {
 
 	/**
-	 * GESTAO DE RECURSOS
-	 */
-	public static final String RE = "RE";
-	public static final String NAME = "NAME";
-	public static final String EMAIL = "EMAIL";
-	public static final String PASSWORD = "PASSWORD";
-	public static final String ACTIVE = "ACTIVE";
-	public static final String CPF = "CPF";
-	public static final String CONTRACT = "CONTRACT";
-	public static final String PHONE_NUMBER = "PHONE_NUMBER";
-	public static final String COST_CENTER = "COST_CENTER";
-	public static final String ROLE_GROUP = "ROLE_GROUP";
-	public static final String ID_EMPLOYEE = "ID_EMPLOYEE";
-	
-	public static final String ID_COST_CENTER = "IDCOSTCENTER";
-	public static final String COST_CENTER_NAME = "NAME";
-	public static final String INSERT = "INSERT";
-	
-	/**
-	 * AULANET
+	 * LMS
 	 */
 	public static final String COMPANY_AREA = "COMPANY_AREA";
 	public static final String COMPANY_AREA_NAME = "NAME";

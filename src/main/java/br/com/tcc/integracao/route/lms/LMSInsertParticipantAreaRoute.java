@@ -6,11 +6,11 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.springframework.stereotype.Component;
 
-import br.com.tcc.integracao.bean.lms.MergeStrategyHierarchy;
+import br.com.tcc.integracao.bean.lms.MergeStrategyArea;
 import br.com.tcc.integracao.util.RouteConstants;
 
 @Component
-public class ANETInsertParticipantHierarchyRoute extends SpringRouteBuilder {
+public class LMSInsertParticipantAreaRoute extends SpringRouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
@@ -22,28 +22,28 @@ public class ANETInsertParticipantHierarchyRoute extends SpringRouteBuilder {
 								
 		onException(SQLException.class)
 	    .handled(true)
-	    .setHeader(RouteConstants.SYSTEM_FAIL, simple("ANET"))
+	    .setHeader(RouteConstants.SYSTEM_FAIL, simple("LMS"))
 	    .setBody(simple("false"))
 	    .to("checkpoint:error?executionStatus=processed_with_error")
-	    .to("seda:anetCheckForPersistRoute");
+	    .to("seda:LMSCheckForPersistRoute");
 		
 		onException(Throwable.class)
 		.handled(true)
-		.setHeader(RouteConstants.SYSTEM_FAIL, simple("ANET"))
+		.setHeader(RouteConstants.SYSTEM_FAIL, simple("LMS"))
 		.setBody(simple("false"))
 	    .to("checkpoint:error?executionStatus=processed_with_error")
-	    .to("seda:anetCheckForPersistRoute");
+	    .to("seda:LMSCheckForPersistRoute");
 		
-		from("direct:insertParticipantHierarchy").routeId("ANETInsertParticipantHierarchyRoute")
-		.to("checkpoint:bean?message=[ANET] Hierarquias sendo inseridas...")
-		.enrich("mybatis:selectAllHierarchies?statementType=SelectList", new MergeStrategyHierarchy())
+		from("direct:insertParticipantArea").routeId("lmsInsertParticipantAreaRoute")
+		.to("checkpoint:bean?message=Áreas sendo inseridas...")
+		.enrich("mybatis:selectAllAreas?statementType=SelectList", new MergeStrategyArea())
 		.choice()
 		  .when(simple("${body.size()} > 0"))
-		  	.to("mybatis:insertAnetHierarchy?statementType=InsertList")
+		  	.to("mybatis:insertLMSArea?statementType=InsertList")
 		  .otherwise()
-		    .to("checkpoint:bean?message=[ANET] Não existe nenhuma hierarquia para ser atualizada...")
+		    .to("checkpoint:bean?message=Não existe nenhuma area para ser atualizada...")
 		.end()
 		.setBody(simple("true"))
-		.to("seda:anetCheckForPersistRoute");
+		.to("seda:LMSCheckForPersistRoute");
 	}
 }

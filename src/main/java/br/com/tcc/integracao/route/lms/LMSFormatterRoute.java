@@ -14,7 +14,7 @@ import br.com.tcc.integracao.util.CopyMessage;
 import br.com.tcc.integracao.util.RouteConstants;
 
 @Component
-public class ANETFormatterRoute extends SpringRouteBuilder {
+public class LMSFormatterRoute extends SpringRouteBuilder {
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -27,34 +27,34 @@ public class ANETFormatterRoute extends SpringRouteBuilder {
 						
 		onException(IllegalArgumentException.class, SQLException.class)
 	    .handled(true)
-	    .setHeader(RouteConstants.SYSTEM_FAIL, simple("ANET"))
+	    .setHeader(RouteConstants.SYSTEM_FAIL, simple("LMS"))
 	    .setBody(simple("false"))
 	    .to("seda:checkForPersistRoute");
 		
 		onException(Throwable.class)
 		.handled(true)
-		.setHeader(RouteConstants.SYSTEM_FAIL, simple("ANET"))
+		.setHeader(RouteConstants.SYSTEM_FAIL, simple("LMS"))
 		.setBody(simple("false"))
 	    .to("seda:checkForPersistRoute");
 		
-		from("direct:anetFormatter").routeId("ANETFormatterRoute")
+		from("direct:lmsFormatter").routeId("lmsFormatterRoute")
 		.setHeader(RouteConstants.HEADER_STATUS, simple("true"))
 		.bean(CopyMessage.class)
-		.to("checkpoint:bean?message=[ANET] Filtrando dados...")
+		.to("checkpoint:bean?message=Filtrando dados...")
 		.bean(LMSFilter.class)
-		.to("checkpoint:bean?message=[ANET] Dados filtrados com sucesso...")
+		.to("checkpoint:bean?message=Dados filtrados com sucesso...")
 		.bean(LMSFormatter.class)
-		.to("checkpoint:bean?message=[ANET] Dados formatados com sucesso...")
-		.to("checkpoint:bean?message=[ANET] Participantes sendo inseridos na intermediária...")
+		.to("checkpoint:bean?message=Dados formatados com sucesso...")
+		.to("checkpoint:bean?message=Participantes sendo inseridos na intermediária...")
 		.split(body()).stopOnException()
 			.aggregate(constant(true), new ListAggregationStrategy())
 			.completionPredicate(new BatchSizePredicate(RouteConstants.BATCH_SIZE))
 			.completionTimeout(RouteConstants.BATCH_TIME_OUT)
-				.to("mybatis:insertAnetParticipants?statementType=InsertList")
-				.to("mybatis:insertAnetManagerParticipant?statementType=InsertList")
+				.to("mybatis:insertLMSParticipants?statementType=InsertList")
+				.to("mybatis:insertLMSManagerParticipant?statementType=InsertList")
 			.end()
 		.end()
-		.to("checkpoint:bean?message=[ANET] Participantes inseridos com sucesso na intermediária...")
+		.to("checkpoint:bean?message=Participantes inseridos com sucesso na intermediária...")
 		.multicast()
 		.parallelProcessing()
 		.to("direct:insertParticipantArea", "direct:insertParticipantHierarchy");

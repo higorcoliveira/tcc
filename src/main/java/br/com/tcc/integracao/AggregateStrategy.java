@@ -41,7 +41,7 @@ public class AggregateStrategy implements AggregationStrategy {
 			case RouteConstants.GR_FAIL:
 				newExchange.getIn().setHeader(RouteConstants.ROUTE_GR_FAIL, systemFail);
 				break;
-			case RouteConstants.ANET_FAIL:
+			case RouteConstants.LMS_FAIL:
 				newExchange.getIn().setHeader(RouteConstants.ROUTE_ANET_FAIL, systemFail);
 				break;
 			case RouteConstants.SKILLO_FAIL:

@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.util;
+package br.com.tcc.integracao.test.util;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
@@ -19,12 +19,12 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-import br.com.afferolab.hub.atento.ativos.mappings.LoadService;
 import br.com.afferolab.utils.camel.response.IntegrationResponse;
 import br.com.afferolab.utils.camel.response.ResponseFactory;
 import br.com.afferolab.utils.http.security.cxf.HMACSecurityInterceptor;
 import br.com.afferolab.utils.util.StringUtil;
 import br.com.afferolab.utils.util.TestUtil;
+import br.com.tcc.integracao.mappings.LoadService;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 

@@ -19,7 +19,7 @@ public class LMSFilter {
 		List<Ativo> listAtivosAnet = new ArrayList<Ativo>(); 
 		
 		for (Ativo ativo : listAtivos) {
-			if (RoleGroupUtil.getRoleGroupAnet().contains(RoleGroupUtil.extractRoleGroup(ativo.getRoleGroup()))) {
+			if (RoleGroupUtil.getRoleGroupLms().contains(RoleGroupUtil.extractRoleGroup(ativo.getRoleGroup()))) {
 				listAtivosAnet.add(ativo);
 			}
 		}

@@ -1,4 +1,4 @@
-package br.com.afferolab.hub.atento.ativos.mappings;
+package br.com.tcc.integracao.mappings;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

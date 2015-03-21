@@ -27,6 +27,6 @@ public class ExecuteQueryCompanyHierarchy {
 		List<QueryXMLParameter> query = new ArrayList<>();
 		query.add(queriesXMLParameter);
 		
-		return QueryBuilderUtil.build(RouteConstants.QUERY_DISCRIMINATOR, validQueryXML, query);
+		return QueryBuilderUtil.build(RouteConstants.QUERY_HIERARCHY_DISCRIMINATOR, validQueryXML, query);
 	}
 }
