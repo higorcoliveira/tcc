@@ -42,6 +42,6 @@ public class UnmarshallRoute extends SpringRouteBuilder {
 		.to("checkpoint:bean?message=Enviando para as rotas de validação LMS...")
 		.multicast()
 		.parallelProcessing()
-		.to("direct:anetFormatter");
+		.to("direct:lmsFormatter");
 	}
 }
